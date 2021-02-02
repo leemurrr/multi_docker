@@ -8,7 +8,7 @@ before_install:
   - docker build -t lea/react-test -f ./client/Dockerfile.dev ./client
 
 script:   
-  - docker run lea/react-test npm test -- --coverage
+  - docker run -e CI=true lea/react-test npm test -- --coverage
 
 after_success:
   - docker build -t lea/multi-client ./client
